@@ -2,6 +2,8 @@ package learning.Days;
 
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -14,7 +16,14 @@ public class Two {
             String urlString = "http://localhost:8098/movies"; 
             URL url = new URL(urlString);
             //openstream of url for scanner class to read and later string can be formed using stringbuilder
-            Scanner scanner = new Scanner(url.openStream());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            //By default get request -- but if we have to set
+            conn.setRequestMethod("GET");
+            InputStream stream = conn.getInputStream();
+            //Scanner scanner = new Scanner(url.openStream());
+            
+            Scanner scanner = new Scanner(stream);
+                      
             StringBuilder str = new StringBuilder();
             while(scanner.hasNext()) {
             	str.append(scanner.next());
