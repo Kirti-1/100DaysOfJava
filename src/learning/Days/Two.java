@@ -9,6 +9,7 @@ public class Two {
     public static void main(String[] args) {
         try {
         	
+        	//Making http get request
         	//movies api this will return the list of all the movies from db 
             String urlString = "http://localhost:8098/movies"; 
             URL url = new URL(urlString);
