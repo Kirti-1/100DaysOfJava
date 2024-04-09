@@ -1,6 +1,8 @@
 package learning.Days;
 
 
+//Implementation of threads by extending 'Threads' class
+
 public class Three extends Thread {
 	
 	//Counter function from 1 to 10
@@ -24,6 +26,7 @@ public class Three extends Thread {
 		 *	allowing our program to act more efficient and a multitasker.
 		 *	You can create a thread either by extending the 'Thread' class or by implementing the Runnable interface.
 		 *	Threads represent separate path of execution within a program.
+		 *	Different States of threads -- New,Runnable,blocked,waiting,timed waiting, or terminated.
 		 * 
 		 */
 		
@@ -42,6 +45,8 @@ public class Three extends Thread {
 				}
 			}
 		});
+		
+		//This is how we start a thread -- this internally call Thread's run() method which contains the thread's code. 
 		thread.start();
 		System.out.println("Main Thread!");
 		
