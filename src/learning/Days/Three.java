@@ -28,6 +28,11 @@ public class Three extends Thread {
 		 *	Threads represent separate path of execution within a program.
 		 *	Different States of threads -- New,Runnable,blocked,waiting,timed waiting, or terminated.
 		 * 
+		 * 
+		 *  When we talk about synchronization in context of threads, it's not making them run simaltaneously but rather 
+		 *  managing shared resources and ensuring that threads access them safe and in a coordinated manner to avoid data corruption
+		 *  and inconsistency.
+		 * 
 		 */
 		
 		
@@ -50,6 +55,9 @@ public class Three extends Thread {
 		});
 		
 		//This is how we start a thread -- this internally call Thread's run() method which contains the thread's code. 
+
+		//Since the thread is yet to be executed so it's in 'NEW' state
+		System.out.println(thread.getName()  + "  <<< with state >>> " + thread.getState());
 		thread.start();
 		System.out.println("Main Thread!");
 		
@@ -65,10 +73,11 @@ public class Three extends Thread {
 
 			//after 1 sec the state of thread-0 was in blocked state as it has been blocked as sleep time main thread got finished, now main thread will execute.
 			
+			//so thread-0 is blocked by main thread.
 			System.out.println(tname  + "  <<< with state >>> " + state);
 			System.out.println(mname  + "  <<< with state >>> " + mstate);
 			
-			
+			//When interrupted throws InterruptedException
 //			thread.interrupt();
 			
 		}catch(Exception e){
