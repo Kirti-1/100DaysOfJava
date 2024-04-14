@@ -68,36 +68,18 @@ public class Five {
 		
 		
 		
-
-		//Now Let's make bingoPool using stream
-		
+		//Now Let's make bingoPool using stream	
 		//B-Pool ranging from 1-15
 		
-		IntStream intStream = IntStream.range(1, 100);
-		
-		var bStream = intStream
-				.limit(15)
-				//mapToObj will give no error while converting intStream to stringStream
-				.mapToObj(t -> "B" + t);
-		
-		//Terminal operator
+
+		var bStream =generateBStream();
 		bStream.forEach(System.out::println);
 		
+		
+	
 //		System.out.println("***************************************************");
 		
-		
-		
 		//I-Pool ranging from 16-30
-		
-		Stream.generate(() -> (int)((Math.random() * 15) + 16))
-					.limit(15)
-					/* 
-					 * The arrangement of dinstinct can play an interesting role as when placed after limit 
-					 * it'll only take 15 numbers that may or may not contain multiple occurances of same number
-					*/
-					.distinct()
-					.sorted();
-//					.forEach(System.out::println);
 		
 		
 		System.out.println("**********************  I-Pool *********************************");
@@ -106,18 +88,9 @@ public class Five {
 		 * Our aim is to get the below result for generating I-Pool
 		 * */
 		
-		var iStream = Stream.generate(() -> (int)((Math.random() * 15) + 16))
-					/*
-					 * But when placed before limit it'll generate infinite number of distinct number also checking the next condition
-					 * of limiting the generated number till 15
-					 * then sorting it in an order provided by comparator.
-					*/
-					.distinct()
-					.limit(15)
-					.sorted()
-					.map(t -> "I"+t);
-					//.forEach(System.out::println);
+		var iStream =generateIStream();
 		iStream.forEach(System.out::println);
+		
 		
 		System.out.println("***************************************************************");
 		
@@ -135,17 +108,57 @@ public class Five {
 		 * The Function takes an element of the stream (in this case, an Integer) as input and produces a result of any type as output.
 		 * */
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
+	
+	
+	public static Stream<String> generateBStream(){
+		IntStream intStream = IntStream.range(1, 100);
+		
+		var bStream = intStream
+				.limit(15)
+				//mapToObj will give no error while converting intStream to stringStream
+				.mapToObj(t -> "B" + t);
+		
+		//Terminal operator
+//		bStream.forEach(System.out::println);
+		
+		return bStream;
+	}
+	
+	
+	public static Stream<String> generateIStream(){
+		
+		
+		
+		Stream.generate(() -> (int)((Math.random() * 15) + 16))
+				.limit(15)
+				/* 
+				 * The arrangement of dinstinct can play an interesting role as when placed after limit 
+				 * it'll only take 15 numbers that may or may not contain multiple occurances of same number
+				*/
+				.distinct()
+				.sorted();
+//				.forEach(System.out::println);
+	
+	
+		
+		
+		var iStream = Stream.generate(() -> (int)((Math.random() * 15) + 16))
+				/*
+				 * But when placed before limit it'll generate infinite number of distinct number also checking the next condition
+				 * of limiting the generated number till 15
+				 * then sorting it in an order provided by comparator.
+				*/
+				.distinct()
+				.limit(15)
+				.sorted()
+				.map(t -> "I"+t);
+				//.forEach(System.out::println);
+		
+		return iStream;
+	}
+	
+
 	
 	
 
