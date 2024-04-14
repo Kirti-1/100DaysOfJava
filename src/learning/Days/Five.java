@@ -73,7 +73,7 @@ public class Five {
 		
 
 		var bStream =generateBStream();
-		bStream.forEach(System.out::println);
+//		bStream.forEach(System.out::println);
 		
 		
 	
@@ -89,7 +89,7 @@ public class Five {
 		 * */
 		
 		var iStream =generateIStream();
-		iStream.forEach(System.out::println);
+//		iStream.forEach(System.out::println);
 		
 		
 		System.out.println("***************************************************************");
