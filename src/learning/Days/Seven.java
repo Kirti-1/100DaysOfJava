@@ -15,6 +15,7 @@ public class Seven {
 		.forEach(t -> System.out.println(t.toString()));
 
 		
+		
 		/*
 		 * 
 			int i = 0;
